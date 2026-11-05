@@ -2,7 +2,7 @@
 
 A full-stack personal finance tracker (MERN) that turns raw income and expense entries into budgets, forecasts, alerts and plain-language answers. AI features are an upgrade, not a dependency: every one of them has a local fallback, so the app works with no API key.
 
-**Live demo:** [https://YOUR-APP.vercel.app](https://fintrack-ai-phi.vercel.app/)
+**Live demo:** [[https://YOUR-APP.vercel.app](https://fintrack-ai.vercel.app)](https://fintrack-ai-phi.vercel.app/)
 **Demo login:** `demo@fintrack.app` / `Demo12345`
 (The API runs on a free Render instance, so the first request after a pause can take about a minute.)
 
