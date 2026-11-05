@@ -1,0 +1,28 @@
+import { Router } from 'express';
+import { protect } from '../middleware/auth.js';
+import { signup, login, getMe } from '../controllers/authController.js';
+import * as tx from '../controllers/transactionController.js';
+import { getBudget, setBudget } from '../controllers/budgetController.js';
+import * as ai from '../controllers/insightController.js';
+import { monthly } from '../controllers/reportController.js';
+
+const r = Router();
+r.post('/auth/signup', signup);
+r.post('/auth/login', login);
+r.use(protect);
+r.get('/auth/me', getMe);
+r.route('/transactions').post(tx.create).get(tx.list);
+r.post('/transactions/import/preview', tx.importPreview);
+r.post('/transactions/import/commit', tx.importCommit);
+r.route('/transactions/:id').put(tx.update).delete(tx.remove);
+r.route('/budget').get(getBudget).post(setBudget).put(setBudget);
+r.get('/dashboard/summary', ai.dashboard);
+r.get('/reports/monthly', monthly);
+r.post('/ai/insights', ai.insights);
+r.post('/ai/predict', ai.predict);
+r.post('/ai/parse', ai.parse);
+r.post('/ai/chat', ai.ask);
+r.post('/ai/goal', ai.goal);
+r.get('/ai/anomalies', ai.anomalies);
+r.get('/ai/recurring', ai.recurring);
+export default r;
